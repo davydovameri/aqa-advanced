@@ -3,11 +3,21 @@ import { Book } from './Book.mjs'
 export class EBook extends Book {
     constructor(name, author, year, fileFormat) {
         super(name, author, year);
-        this.fileFormat = fileFormat;
+        this._fileFormat = fileFormat;
     }
-
+    
     printInfo() {
-        console.log(`The book is called "${this.name}" and was written by ${this.author} in ${this.year} in ${this.fileFormat} format.`);
+        const originalLog = console.log;
+        let output = [];
+
+        console.log = (...messages) => {
+            output.push(messages.join(" ")); 
+        };
+
+        super.printInfo(); 
+        console.log = originalLog; 
+
+        console.log(output.join(" ") + ` in ${this.fileFormat} format.`);
     }
 
     get fileFormat() {
@@ -22,7 +32,6 @@ export class EBook extends Book {
     }
 
     static eConverter({ name, author, year}, format) {
-        const convertedBook = new EBook(name, author, year, format);
-        return convertedBook;
+        return new EBook(name, author, year, format);
       }
 }

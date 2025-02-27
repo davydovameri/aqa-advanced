@@ -1,12 +1,12 @@
 export class Book {
     constructor(name, author, year) {
-        this.name = name;
-        this.author = author;
-        this.year = year;
+        this._name = name;
+        this._author = author;
+        this._year = year;
     }
 
     printInfo() {
-        console.log(`The book is called "${this.name}" and was written by ${this.author} in ${this.year}.`);
+        console.log(`The book is called "${this._name}" and was written by ${this._author} in ${this._year}`);
     }
 
     get name() {
