@@ -1,9 +1,8 @@
 async function toDos() {
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-        const data = await response.json();
         console.log(data);
-        return data;
+        return response.json();
     }
     catch (error) {
         console.error('An error occurred:', error);
@@ -14,9 +13,8 @@ async function toDos() {
 async function user() {
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
-        const data = await response.json();
         console.log(data);
-        return data;
+        return response.json();
     }
     catch (error) {
         console.error('An error occurred:', error);
